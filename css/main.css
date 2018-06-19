@@ -8,4 +8,40 @@ body {
 
 .pomodoro-clock{
     height: 100vh;
+    background-color: tomato;
+    color: #fff;
+    position: relative;
+}
+
+.controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.control-btn {
+    flex: 1;
+    cursor: pointer;
+    padding: 10px 15px;
+    font-size: 22px;
+    color: #fff;
+}
+
+.custom-form {
+    flex: 1;
+    display: flex;
+}
+
+input[name="time-input"] {
+    flex: 1;
+}
+
+.timer-info {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: lightgreen;
+    height: 400px;
+    width: 400px;
 }
