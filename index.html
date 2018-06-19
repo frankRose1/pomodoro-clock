@@ -1,0 +1,48 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <!--<meta property="og:title" content="" />-->
+    <!--<meta property="og:url" content="" />-->
+    <!--<meta property="og:image" content="" />-->
+    <!--<meta property="og:site_name" content="" />-->
+    <!--<meta property="og:description" content="" />-->
+    <title>Pomodoro Clock</title>
+    <link rel="stylesheet" href="css/reset.css">
+    <link href="https://fonts.googleapis.com/css?family=Oswald:400,700" rel="stylesheet"> 
+    <link rel="stylesheet" href="css/main.css">
+    <!--[if lt IE 9]>
+            <script src="scripts/html5shiv.min.js"></script>
+        <![endif]-->
+</head>
+
+<body>
+
+    <div class="pomodoro-clock">
+        <header>
+            <div class="controls">
+                <!-- data-time represents the button text in seconds -->
+                <button data-time="300" class="control-btn">5:00</button>
+                <button data-time="900"  class="control-btn">15:00</button>
+                <button data-time="1500"  class="control-btn">25:00</button>
+                <button data-time="2700" class="control-btn">45:00</button>
+                <button data-time="3600" class="control-btn">60:00</button>
+            </div>
+            <form method="post" class="custom-form" name="custom-form">
+                <input type="text" name="time-input" placeholder="Enter your time in minutes...">
+            </form>
+        </header>
+        <!-- update this section with JS -->
+        <div class="timer-info">
+            <h1 class="timer"></h1>
+            <h3 class="time-left"></h3>
+        </div>
+    </div>
+    
+    
+    <script src="scripts/app.js"></script>
+</body>
+
+</html>
