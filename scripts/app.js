@@ -7,11 +7,15 @@
 let countDown;
 const timerDisplay = document.querySelector('.timer');
 const endTimeDisplay = document.querySelector('.end-time');
+const buttons = document.querySelectorAll('[data-time]');
 
 
 //handle the tracking of desired time
 //all inputs will be converted to seconds before being passed in, if not already done
 function timer(seconds) {
+
+    clearInterval(countDown); //clear any active timers
+
    //get the time right NOW
    const now = Date.now(); //this is in millisecond**
    const endPoint = now + (seconds * 1000); 
@@ -29,6 +33,7 @@ function timer(seconds) {
             displayTimer(secondsRemaining);
         }
     }, 1000); //end interval
+    
 }
 
 //show the timer in the DOM
@@ -46,10 +51,17 @@ function displayTimer(seconds){
     //this variable is a result of date.now(), so it will be in milliseconds
 function displayEndTime(timeStamp){
     //get a new date to show the user when their timer expires
-    const endTime = new Date(timeStamp); //now we have a dae object represented by the 'endpoint' variable
+    const endTime = new Date(timeStamp); //now we have a date object represented by the 'endpoint' variable
     const hour = endTime.getHours();
     const minutes = endTime.getMinutes();
-    console.log({hour, minutes});
-
-    //you're timer expires at ...
+    //adjust the hour and minutes
+    endTimeDisplay.textContent = `Timer expires at ${hour > 12 ? hour - 12 : hour}:${minutes < 10 ? 0 : ''}${minutes}`;
 }
+
+//get the time in seconds from the button clicks
+function startTimer(){
+    const seconds = parseInt(this.dataset.time);
+    timer(seconds);
+}
+
+buttons.forEach(button => button.addEventListener('click', startTimer));
