@@ -8,6 +8,7 @@ let countDown;
 const timerDisplay = document.querySelector('.timer');
 const endTimeDisplay = document.querySelector('.end-time');
 const buttons = document.querySelectorAll('[data-time]');
+const form = document.querySelector('.custom-form');
 
 
 //handle the tracking of desired time
@@ -33,7 +34,7 @@ function timer(seconds) {
             displayTimer(secondsRemaining);
         }
     }, 1000); //end interval
-    
+
 }
 
 //show the timer in the DOM
@@ -65,3 +66,14 @@ function startTimer(){
 }
 
 buttons.forEach(button => button.addEventListener('click', startTimer));
+//let the user input custom time using the form input
+form.addEventListener('submit', function(e){
+    e.preventDefault();
+   const input = parseInt(this.querySelector('[name=time-input]').value);
+   if (Number.isNaN(input)) {
+    alert('Please enter a number!!');
+   } else {
+    timer(input);
+   }
+   this.reset(); //clear the form
+});
