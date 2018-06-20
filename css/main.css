@@ -8,7 +8,7 @@ body {
 
 .pomodoro-clock{
     height: 100vh;
-    background-color: tomato;
+    background-color: #ff6347;
     color: #fff;
     position: relative;
 }
@@ -22,9 +22,17 @@ body {
 .control-btn {
     flex: 1;
     cursor: pointer;
-    padding: 10px 15px;
-    font-size: 22px;
+    border: 0;
+    padding: 1rem;
+    font-size: 2rem;
     color: #fff;
+    background: rgba(0, 0, 0, 0.1);
+    transition: background 0.5s ease-in-out;
+    border-bottom: 4px solid #ff3c1a;
+}
+
+.control-btn:hover{
+    background: #ff3c1a;
 }
 
 .custom-form {
@@ -35,6 +43,8 @@ body {
 
 input[name="time-input"] {
     flex: 1;
+    padding: 2rem;
+    border: 0;
 }
 
 .timer-info {

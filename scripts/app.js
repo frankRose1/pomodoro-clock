@@ -1,20 +1,13 @@
-//1)need to get the time starting NOW (the point that the timer starts)
-    //normalize the input
-    //keep track of the timer
-//2)also get the timestamp that the timer will end
-    //decrement the timer from its starting point
-//3) display the timer and the endpoint to the HTML
+(function(){
+
 let countDown;
 const timerDisplay = document.querySelector('.timer');
 const endTimeDisplay = document.querySelector('.end-time');
 const buttons = document.querySelectorAll('[data-time]');
 const form = document.querySelector('.custom-form');
 
-
-//handle the tracking of desired time
 //all inputs will be converted to seconds before being passed in, if not already done
 function timer(seconds) {
-
     clearInterval(countDown); //clear any active timers
 
    //get the time right NOW
@@ -34,17 +27,15 @@ function timer(seconds) {
             displayTimer(secondsRemaining);
         }
     }, 1000); //end interval
-
 }
 
-//show the timer in the DOM
+
 //param should always be coming in as seconds
-function displayTimer(seconds){
-    
+function displayTimer(seconds){   
     const minutes = Math.floor(seconds / 60 );
     const secondsLeft = seconds % 60;
     const display = `${minutes}:${secondsLeft < 10 ? 0 : ''}${secondsLeft}`;
-    timerDisplay.textContent = display;
+    timerDisplay.textContent = display; //show the timer in the DOM
     document.title = display;
 }
 
@@ -67,13 +58,19 @@ function startTimer(){
 
 buttons.forEach(button => button.addEventListener('click', startTimer));
 //let the user input custom time using the form input
+    //the input will initially be in MINUTES
 form.addEventListener('submit', function(e){
     e.preventDefault();
    const input = parseInt(this.querySelector('[name=time-input]').value);
+
    if (Number.isNaN(input)) {
-    alert('Please enter a number!!');
+    alert('Please enter number only!');
    } else {
-    timer(input);
+    const seconds = input * 60;
+    timer(seconds);
    }
    this.reset(); //clear the form
 });
+
+})()
+
