@@ -5,6 +5,8 @@
     //decrement the timer from its starting point
 //3) display the timer and the endpoint to the HTML
 let countDown;
+const timerDisplay = document.querySelector('.timer');
+const endTimeDisplay = document.querySelector('.end-time');
 
 
 //handle the tracking of desired time
@@ -13,7 +15,8 @@ function timer(seconds) {
    //get the time right NOW
    const now = Date.now(); //this is in millisecond**
    const endPoint = now + (seconds * 1000); 
-    console.log( seconds ); //display the initial amount of time immediately
+   displayTimer(seconds); //display the initial timer immediately
+   displayEndTime(endPoint); //display when the timer expires
     //decrease the timer every second
     countDown = setInterval( () => {
         //we need to get a new date.now to decrement our timer
@@ -23,7 +26,30 @@ function timer(seconds) {
             clearInterval(countDown);
             return;
         } else {
-            console.log(secondsRemaining);
+            displayTimer(secondsRemaining);
         }
     }, 1000); //end interval
+}
+
+//show the timer in the DOM
+//param should always be coming in as seconds
+function displayTimer(seconds){
+    
+    const minutes = Math.floor(seconds / 60 );
+    const secondsLeft = seconds % 60;
+    const display = `${minutes}:${secondsLeft < 10 ? 0 : ''}${secondsLeft}`;
+    timerDisplay.textContent = display;
+    document.title = display;
+}
+
+//this will use the 'endpoint' variable from the timer function
+    //this variable is a result of date.now(), so it will be in milliseconds
+function displayEndTime(timeStamp){
+    //get a new date to show the user when their timer expires
+    const endTime = new Date(timeStamp); //now we have a dae object represented by the 'endpoint' variable
+    const hour = endTime.getHours();
+    const minutes = endTime.getMinutes();
+    console.log({hour, minutes});
+
+    //you're timer expires at ...
 }

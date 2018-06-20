@@ -44,4 +44,5 @@ input[name="time-input"] {
     background: lightgreen;
     height: 400px;
     width: 400px;
+    text-align: center;
 }
