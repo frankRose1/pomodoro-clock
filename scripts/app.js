@@ -72,5 +72,17 @@ form.addEventListener('submit', function(e){
    this.reset(); //clear the form
 });
 
+//show about section
+const showBtn = document.querySelector('.about');
+const hideBtn = document.querySelector('.btn');
+
+showBtn.addEventListener('click', () => {
+    document.body.classList.add('show');
+});
+
+hideBtn.addEventListener('click', () => {
+    document.body.classList.remove('show');
+});
+
 })()
 
